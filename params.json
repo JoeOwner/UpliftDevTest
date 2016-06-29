@@ -1,0 +1,6 @@
+{
+  "name": "Upliftdevtest",
+  "tagline": "Uplift JavaScript Developer Test",
+  "body": "<h1>Welcome to Michael Owner's JavaScript Developer Test for Uplift</h1>\r\n<pre>\r\n<code>\r\n{\r\n    var i;\r\n    for(i=0; i < array.length; i++){\r\n       console.log(array[i]);\r\n    }\r\n} \r\n</code>\r\n</pre>\r\n<a class=\"button\">Rerun</a>",
+  "note": "Don't delete this file! It's used internally to help with page regeneration."
+}
