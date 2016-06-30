@@ -1,5 +1,4 @@
-console.log('This would be the main JS file.');
- var JS = {
+var JS = {
  	data : {
  		articles: [],
  		articleMarkup: "<div id='{{id}}' class='article_section colapsed'> \
@@ -16,9 +15,9 @@ console.log('This would be the main JS file.');
  		</div>" 
  	},
  	fetchData : function(){
- 		var data = JS.makeRequest("http://dev.upliftconnect.com/wp-json/wp/v2/posts?context=view&per_page=3&page=1&orderby=id&order=asc&include=12814%2C11627%2C12130", function(data){
+ 		var data = JS.makeRequest("http://dev.upliftconnect.com/wp-json/wp/v2/posts?context=view&per_page=3&page=1&orderby=id&order=asc&include=12814%2C11627%2C12130", function(){
 		
-			JS.printAllData(data);
+			JS.printAllData(JS.data.articles);
 
  		});
  	},
@@ -29,8 +28,6 @@ console.log('This would be the main JS file.');
 		for(i; i < data.length; i++){
 			var item = data[i];
 			 item.cleanDate = JS.convertGMTDate(item.date_gmt);
-
-			 console.log(item);
 			 displayData += JS.printDataItem(item);
 		};
 		document.getElementById("upliftData").innerHTML = displayData
@@ -53,16 +50,16 @@ console.log('This would be the main JS file.');
 	               || document.documentElement;
 
 	    window[ud] = function(data) {
-	    	console.log('did I get it? 	')
-	    	console.log(data);
 	        head.removeChild(script);
 	        success && success(data);
 	    };
 
 	    script.src = url.replace('callback=?', 'callback=' + ud);
 	    head.appendChild(script);
+
+	    JS.data.articles = upliftData
 	    if(callback){
-	    	callback(upliftData);
+	    	callback();
 	    }
  	},
  	convertGMTDate : function(gmtDate){
